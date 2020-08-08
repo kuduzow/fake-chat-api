@@ -6,7 +6,7 @@ const router = Router();
 router.get('/', async (req, res) => {
   const profile = await Profile.find({});
 
-  return res.json(profile);
+  return res.json(...profile);
 
 });
 
