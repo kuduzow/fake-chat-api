@@ -5,7 +5,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 //for retrieve request body as JSON
-//const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 //cors settings
 const cors = require('cors');
@@ -26,10 +26,10 @@ const app = express();
 
 //express middleWares
 //parse request body as json
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 //setting cors policy
-app.use(cors({ origin: 'http://151.248.117.7:8001', credentials: true }));
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
 // middleware, chain /api with index router
 app.use('/api', require('./routes/index'));

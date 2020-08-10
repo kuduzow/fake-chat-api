@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const chatSchema = new Schema({
-  userId: Schema.Types.ObjectId,
-  lastMessage: String,
-  lastMessageDate: Date,
+const messageSchema = new Schema({
+  fromUserId: Schema.Types.ObjectId,
+  toUserId: Schema.Types.ObjectId,
+  type: String,
+  content: String,
+  time: Date
 });
 
-module.exports = mongoose.model('Chat', chatSchema);
+module.exports = mongoose.model('Message', messageSchema);
