@@ -7,7 +7,6 @@ router.get('/', async (req, res) => {
   const profile = await Profile.find({});
 
   return res.json(...profile);
-
 });
 
 module.exports = router;
