@@ -4,8 +4,8 @@ const mongoose = require('mongoose');
 
 const router = Router();
 
-router.get('/', async (req, res) => {
-  const { contactId, myId } = req.body;
+router.get('/:myId/:contactId', async (req, res) => {
+  const { contactId, myId } = req.params;
 
   console.log({
     $or: [
