@@ -1,19 +1,32 @@
 const { Router } = require('express');
 const Message = require('../models/Message');
+const mongoose = require('mongoose');
 
 const router = Router();
 
 router.get('/', async (req, res) => {
   const { contactId, myId } = req.body;
 
-  const messages = await Message.find({
+  console.log({
     $or: [
       { toUserId: myId, fromUserId: contactId },
       { toUserId: contactId, fromUserId: myId }
     ]
   });
 
-  return res.json(messages);
+  try {
+    const messages = await Message.find({
+      $or: [
+        { toUserId: myId, fromUserId: contactId },
+        { toUserId: contactId, fromUserId: myId }
+      ]
+    });
+
+    return res.json(messages);
+
+  } catch (error) {
+    return res.json({error: error.message});
+  }
 });
 
 router.post('/', async (req, res) => {
