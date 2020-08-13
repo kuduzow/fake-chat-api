@@ -7,13 +7,6 @@ const router = Router();
 router.get('/:myId/:contactId', async (req, res) => {
   const { contactId, myId } = req.params;
 
-  console.log({
-    $or: [
-      { toUserId: myId, fromUserId: contactId },
-      { toUserId: contactId, fromUserId: myId }
-    ]
-  });
-
   try {
     const messages = await Message.find({
       $or: [
@@ -31,6 +24,8 @@ router.get('/:myId/:contactId', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const { myId, contactId, content, type } = req.body;
+
+  console.log({ myId, contactId, content, type })
 
   try {
     const message = await new Message({
