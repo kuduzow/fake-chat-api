@@ -25,7 +25,7 @@ router.get('/:myId/:contactId', async (req, res) => {
 router.post('/', async (req, res) => {
   const { myId, contactId, content, type } = req.body;
 
-  console.log({ myId, contactId, content, type })
+  console.log(req.body);
 
   try {
     const message = await new Message({
