@@ -12,6 +12,14 @@ const contactSchema = new Schema({
   archived: {
     type: Boolean,
     default: false
+  },
+  socials: {
+    type: Schema({
+      _id: false,
+      twitter: String,
+      instagram: String,
+      facebook: String
+    })
   }
 });
 
