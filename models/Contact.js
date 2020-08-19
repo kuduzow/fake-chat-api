@@ -21,6 +21,14 @@ const contactSchema = new Schema({
       facebook: String
     })
   }
+}, {
+  toJSON: {
+    virtuals: true
+  }
 });
+
+contactSchema.virtual('online').get(() => {
+  return Boolean(Math.random() < 0.5)
+})
 
 module.exports = mongoose.model('Contact', contactSchema);
