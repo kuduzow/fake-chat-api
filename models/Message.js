@@ -7,7 +7,12 @@ const messageSchema = new Schema({
   toUserId: Schema.Types.ObjectId,
   type: String,
   content: String,
-  time: Date
+  time: Date,
+  read: {
+    type: Boolean,
+    default: false,
+    required: true
+  }
 });
 
 module.exports = mongoose.model('Message', messageSchema);
