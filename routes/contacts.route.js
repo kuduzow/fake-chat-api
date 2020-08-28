@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
         as: 'lastMessage'
       }
     },
+    { $unwind: '$lastMessage' }
   ]);
 
   return res.json(contacts);
