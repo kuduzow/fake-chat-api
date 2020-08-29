@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
         as: 'lastMessage'
       }
     },
-    { $unwind: '$lastMessage' }
+    { $unwind: { path: '$lastMessage', preserveNullAndEmptyArrays: true} }
   ]);
 
   return res.json(contacts);
