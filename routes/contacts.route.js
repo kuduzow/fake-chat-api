@@ -24,13 +24,18 @@ router.get('/', async (req, res) => {
           { $sort: { time: -1 } },
           { $limit: 1 }
         ],
-        as: 'lastMessage'
+        as: 'lastMessage',
       }
     },
-    { $unwind: { path: '$lastMessage', preserveNullAndEmptyArrays: true} }
+    { $unwind: { path: '$lastMessage', preserveNullAndEmptyArrays: true} },
   ]);
 
-  return res.json(contacts);
+  return res.json(contacts.map(contact => (
+    {
+      ...contact,
+      online: Boolean(Math.random() < 0.5)
+    }
+    )));
 });
 
 router.post('/', async (req, res) => {
