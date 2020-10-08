@@ -45,7 +45,7 @@ app.use('/api', require('./routes/index'));
 //listen to the connection
 if(process.env.SERVER === "localhost") {
   app.listen(8001, () => {
-    console.log('Server has been started...')
+    console.log('Слушаю http...')
   });
 }
 else {
@@ -58,7 +58,3 @@ else {
     console.log("Слушаю на https...")
   })
 }
-// app.listen(8001, () => {
-//   console.log('Server has been started...')
-// });
-//
