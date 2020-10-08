@@ -1,3 +1,6 @@
+//просто подключаем, чтобы в process.env были нужные переменные
+require('dotenv').config();
+
 //express application
 const express = require('express');
 
@@ -9,6 +12,10 @@ const bodyParser = require('body-parser');
 
 //cors settings
 const cors = require('cors');
+
+const https = require('https');
+
+const fs = require("fs");
 
 //connecting to db
 try {
@@ -36,6 +43,22 @@ app.use(cors());
 app.use('/api', require('./routes/index'));
 
 //listen to the connection
-app.listen(8001, () => {
-  console.log('Server has been started...')
-});
+if(process.env.SERVER === "localhost") {
+  app.listen(8001, () => {
+    console.log('Server has been started...')
+  });
+}
+else {
+  https.createServer({
+      key: fs.readFileSync('/etc/ssl/private/apache-selfsigned.key'),
+      cert: fs.readFileSync('/etc/ssl/certs/apache-selfsigned.crt'),
+      requestCert: false,
+      rejectUnauthorized: false
+    }, app).listen(8001, () => {
+    console.log("Слушаю на https...")
+  })
+}
+// app.listen(8001, () => {
+//   console.log('Server has been started...')
+// });
+//
