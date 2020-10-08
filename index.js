@@ -50,8 +50,8 @@ if(process.env.SERVER === "localhost") {
 }
 else {
   https.createServer({
-      key: fs.readFileSync('/etc/ssl/private/apache-selfsigned.key'),
-      cert: fs.readFileSync('/etc/ssl/certs/apache-selfsigned.crt'),
+      key: fs.readFileSync('/etc/ssl/api.intocode.ru.key'),
+      cert: fs.readFileSync('/etc/ssl/api.intocode.ru.crt'),
       requestCert: false,
       rejectUnauthorized: false
     }, app).listen(8001, () => {
