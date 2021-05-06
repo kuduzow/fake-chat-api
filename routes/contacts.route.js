@@ -38,20 +38,4 @@ router.get('/', async (req, res) => {
     )));
 });
 
-router.post('/', async (req, res) => {
-  const { username, fullname, picture } = req.body;
-
-  try {
-    const contact = await new Contact({
-      username, fullname, picture
-    });
-
-    contact.save();
-
-    res.json(contact);
-  } catch (e) {
-    res.json(e)
-  }
-});
-
 module.exports = router;
