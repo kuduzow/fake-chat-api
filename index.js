@@ -35,7 +35,7 @@ try {
 const app = express();
 
 // set logger
-app.use(morgan('combine'));
+app.use(morgan('combined'));
 
 //express middleWares
 //parse request body as json
