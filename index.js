@@ -1,6 +1,9 @@
 //просто подключаем, чтобы в process.env были нужные переменные
 require('dotenv').config();
 
+// logger
+const morgan = require('morgan');
+
 //express application
 const express = require('express');
 
@@ -30,6 +33,9 @@ try {
 
 //create express application
 const app = express();
+
+// set logger
+app.use(morgan('combine'));
 
 //express middleWares
 //parse request body as json
