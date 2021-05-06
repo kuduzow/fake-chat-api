@@ -19,7 +19,7 @@ const fs = require("fs");
 
 //connecting to db
 try {
-  mongoose.connect("mongodb+srv://fakeChat:fake123@cluster0.bmwz4.mongodb.net/chat?retryWrites=true&w=majority", {
+  mongoose.connect(process.env.MONGO_SERVER, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   });
