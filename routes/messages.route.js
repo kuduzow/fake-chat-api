@@ -52,7 +52,7 @@ router.post("/", async (req, res) => {
     { time: true }
   ).sort({ _id: -1 });
 
-  if(haveManySecondsHavePassed(lastMessageCreatedTime.time) < 15) {
+  if (haveManySecondsHavePassed(lastMessageCreatedTime.time) < 15) {
     return res
       .status(400)
       .json("В течении 15-ти секунд можно добавлять только одно сообщение");
@@ -75,4 +75,14 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/:id", async (req, res) => {
+  return res.json({
+    status: "ok",
+    message: `Сообщение с id ${req.params.id} удалено`,
+    description:
+      "Внимание! Данная операция не удалила сообщение полностью с " +
+      "сервера, а только имитировала удаление. После обновления " +
+      "удаленное сообщение вновь станет доступным в чате.",
+  });
+});
 module.exports = router;
