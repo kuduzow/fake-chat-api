@@ -1,6 +1,8 @@
 //просто подключаем, чтобы в process.env были нужные переменные
 require('dotenv').config();
 
+// Оставляем комментарий для ПР
+
 // logger
 const morgan = require('morgan');
 
